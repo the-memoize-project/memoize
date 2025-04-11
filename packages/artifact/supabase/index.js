@@ -18,6 +18,7 @@ export { default as habitsOfUser } from "./habitsOfUser";
 export { default as nextReviewCard } from "./nextReviewCard";
 export { default as nextReviewCardOfDeck } from "./nextReviewCardOfDeck";
 export { default as pauseDeckOfId } from "./pauseDeckOfId";
+export { default as playDeckOfId } from "./playDeckOfId";
 export { default as progressOfUser } from "./progressOfUser";
 export { default as resetPasswordForEmail } from "./resetPasswordForEmail";
 export { default as signInWithOAuth } from "./signInWithOAuth";
