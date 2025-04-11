@@ -11,7 +11,7 @@ function component() {
         </m-text>
         <m-form>
           <template>
-            <m-input label="Pergunta" name="front" maxlength="128" required>
+            <m-input label="Pergunta" name="front" maxlength="256" required>
               <m-validity state="valueMissing">Pergunta é obrigatório</m-validity>
               <m-text size="xxxs" color="info">Digite a pergunta ou conceito a ser revisado.</m-text>
             </m-input>
