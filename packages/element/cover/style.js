@@ -10,7 +10,10 @@ function style(self) {
       aspect-ratio: var(--aspect-ratio-${self.aspect});
       background-color: var(--color-master-lighter);
       border-radius: var(--border-radius-sm);
-      display: block;
+      display: flex;
+      justify-content: center;
+      max-height: 432px;
+      max-width: 768px;
       width: 100%;
 
       img {
@@ -18,7 +21,8 @@ function style(self) {
         border-radius: inherit;
         color: transparent;
         display: block;
-        object-fit: cover;
+        object-fit: contain;
+        max-height: inherit;
         width: inherit;
       }
     }

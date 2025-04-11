@@ -16,7 +16,7 @@ function component() {
               <m-text size="xxxs" color="info">Digite a pergunta ou conceito a ser revisado.</m-text>
             </m-input>
             <m-input id="cover" label="Imagem de Referência (URL)" name="cover" type="url" maxlength="256">
-              <m-cover slot="preview" aspect="wide" on="cover/change:attribute/src"></m-cover>
+              <m-cover slot="preview" aspect="auto" on="cover/change:attribute/src"></m-cover>
               <m-validity state="typeMismatch">URL inválida</m-validity>
               <m-text size="xxxs" color="info">Insira a URL de uma imagem para ilustrar a pergunta.</m-text>
             </m-input>

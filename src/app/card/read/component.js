@@ -14,7 +14,7 @@ async function component(self) {
           ${await self.card.front}
         </m-card-front>
         <m-show when="${!!self.card.cover}">
-          <m-cover aspect="wide" src="${self.card.cover}"></m-cover>
+          <m-cover aspect="auto" src="${self.card.cover}"></m-cover>
         </m-show>
         <m-card-splash slim="${!!self.card.cover}"></m-card-splash>
         <m-card-back hidden on="m-card-splash/hide:attribute/hidden|not">
