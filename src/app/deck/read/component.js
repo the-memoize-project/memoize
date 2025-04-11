@@ -4,7 +4,6 @@ import "./shelf";
 import "./study";
 
 import { html } from "standard/dom";
-import { urlFor } from "standard/router";
 
 function component(self) {
   return html`

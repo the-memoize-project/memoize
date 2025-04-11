@@ -1,6 +1,5 @@
 import { define } from "directive";
 import { paint, willPaint } from "standard/dom";
-import { params } from "standard/router";
 import component from "./component";
 import Deck from "./deck";
 import { hydrate } from "./interfaces";
