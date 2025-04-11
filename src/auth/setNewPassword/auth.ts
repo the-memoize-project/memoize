@@ -1,31 +1,24 @@
-import User from "auth/forgotPassword/user";
 import style from "auth/signIn/style";
 import { define } from "directive";
 import { paint, willPaint } from "standard/dom";
-import on, { stop } from "standard/event";
+import on, { detail, stop } from "standard/event";
 import { hydrate } from "standard/interface";
 import * as Navigate from "standard/navigate";
-import { args } from "standard/router";
 import component from "./component";
+import User from "./user";
 
-@define("m-email-verification")
+@define("m-set-new-password")
 @paint(component, style)
-class OAuth extends HTMLElement {
+class Auth extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({ mode: "open" });
   }
 
-  @on.click(":host #openEmailApp", stop)
-  openEmailApp() {
-    const [, url] = args.email.split("@");
-    Navigate.goToEmailProvider(url);
-    return this;
-  }
-
-  @on.click(":host #resend", stop)
-  async resend() {
-    await User.resetPasswordForEmail(args.email);
+  @on.submit(":host m-form", stop, detail)
+  async reset(data) {
+    const user = await User.updateUser(data);
+    user && Navigate.goToPasswordReseted();
     return this;
   }
 
@@ -36,4 +29,4 @@ class OAuth extends HTMLElement {
   }
 }
 
-export default OAuth;
+export default Auth;

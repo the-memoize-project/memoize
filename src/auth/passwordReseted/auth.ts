@@ -1,25 +1,17 @@
+import User from "auth/forgotPassword/user";
 import style from "auth/signIn/style";
 import { define } from "directive";
 import { paint, willPaint } from "standard/dom";
-import on, { detail, stop } from "standard/event";
 import { hydrate } from "standard/interface";
 import * as Navigate from "standard/navigate";
 import component from "./component";
-import User from "./user";
 
-@define("m-set-new-password")
+@define("m-password-reseted")
 @paint(component, style)
-class OAuth extends HTMLElement {
+class Auth extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({ mode: "open" });
-  }
-
-  @on.submit(":host m-form", stop, detail)
-  async reset(data) {
-    const user = await User.updateUser(data);
-    user && Navigate.goToPasswordReseted();
-    return this;
   }
 
   @willPaint
@@ -29,4 +21,4 @@ class OAuth extends HTMLElement {
   }
 }
 
-export default OAuth;
+export default Auth;

@@ -13,15 +13,15 @@ function component() {
       <auth>
         <m-logo></m-logo>
         <m-stack direction="column" spacing="none" align="center">
-          <m-text color="master-darker" family="highlight" size="md" weight="bold" align="center">Redefinição de senha</m-text>
-          <m-text align="center" size="xxxs">Sua senha foi redefinida com sucesso. Clique abaixo para fazer login de forma rápida e segura.</m-text>
+          <m-text color="master-darker" family="highlight" size="md" weight="bold" align="center">Tudo certo por aqui!</m-text>
+          <m-text align="center" size="xxxs">Sua senha foi atualizada com sucesso. Agora é só fazer login e continuar sua jornada 💡</m-text>
         </m-stack>
         <m-button id="continue" width="100%">
           Continuar
           <m-redirect href="${urlFor("signIn")}" on="continue/click:method/go"></m-redirect>
         </m-button>
         <m-stack direction="column" align="center">
-          <m-link href="${urlFor("signIn")}">Voltar para a tela de login</m-link>
+          <m-link href="${urlFor("signIn")}">Voltar para o login</m-link>
         </m-stack>
       </auth>
     </m-main>

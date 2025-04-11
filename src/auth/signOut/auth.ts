@@ -9,7 +9,7 @@ import User from "./user";
 
 @define("m-sign-out")
 @paint(component, style)
-class OAuth extends HTMLElement {
+class Auth extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({ mode: "open" });
@@ -24,4 +24,4 @@ class OAuth extends HTMLElement {
   }
 }
 
-export default OAuth;
+export default Auth;

@@ -13,14 +13,14 @@ function component() {
       <auth>
         <m-logo></m-logo>
         <m-stack direction="column" spacing="none" align="center">
-          <m-text color="master-darker" family="highlight" size="md" weight="bold" align="center">Verifique seu e-mail</m-text>
-          <m-text align="center" size="xxxs">Enviamos um link para redefinir sua senha para o endereço de e-mail abaixo:</m-text>
+          <m-text color="master-darker" family="highlight" size="md" weight="bold" align="center">Dá uma olhada na sua caixa de entrada!</m-text>
+          <m-text align="center" size="xxxs">Enviamos um link para redefinir sua senha para:</m-text>
           <m-text weight="bold" align="center">${args.email}</m-text>
         </m-stack>
         <m-button id="openEmailApp" width="100%">Abrir aplicativo de e-mail</m-button>
         <m-stack direction="column" align="center">
-          <m-text align="center">Não recebeu o e-mail? <m-link id="resend">Clique aqui para reenviar</m-link></m-text>
-          <m-link href="${urlFor("signIn")}">Voltar para a tela de login</m-link>
+          <m-text align="center">Não recebeu o e-mail? <m-link id="resend">Reenviar</m-link></m-text>
+          <m-link href="${urlFor("signIn")}">Voltar para o login</m-link>
         </m-stack>
       </auth>
     </m-main>
