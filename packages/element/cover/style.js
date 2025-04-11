@@ -6,6 +6,12 @@ function style(self) {
       --aspect-ratio-portrait: 3/4;;
       --aspect-ratio-square: 1/1;;
       --aspect-ratio-wide: 16/9;
+      --aspect-ratio-auto: auto;
+
+      --object-fit-portrait: cover;
+      --object-fit-square: cover;
+      --object-fit-wide: cover;
+      --object-fit-auto: contain;
 
       aspect-ratio: var(--aspect-ratio-${self.aspect});
       background-color: var(--color-master-lighter);
@@ -21,7 +27,7 @@ function style(self) {
         border-radius: inherit;
         color: transparent;
         display: block;
-        object-fit: contain;
+        object-fit: var(--object-fit-${self.aspect});
         max-height: inherit;
         width: inherit;
       }
