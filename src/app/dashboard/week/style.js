@@ -8,9 +8,13 @@ function style() {
       day {
         align-items: center;
         border-radius: var(--border-radius-pill);
+        box-sizing: border-box;
         display: flex;
         flex-direction: column;
+        height: 78px;
+        justify-content: start;
         padding: var(--spacing_inset-nano) var(--spacing_inset-nano);
+        width: 36px;
       }
 
       day[is-today] {
