@@ -3,7 +3,7 @@ import client from "./client";
 function playDeckOfId(deckId) {
   return client
     .from("deck")
-    .update({ playd: false })
+    .update({ paused: false })
     .eq("id", deckId)
     .select()
     .single();
