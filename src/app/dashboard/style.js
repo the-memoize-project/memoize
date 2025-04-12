@@ -7,7 +7,7 @@ function style() {
       box-sizing: border-box;
       display: flex;
       flex-direction: column;
-      gap: var(--spacing_inset-lg);
+      gap: var(--spacing_inset-md);
       justify-content: start;
       margin: 0 auto;
       max-width: 1024;
