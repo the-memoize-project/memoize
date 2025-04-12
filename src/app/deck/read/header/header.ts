@@ -1,6 +1,6 @@
 import { define } from "directive";
-import { hydrate } from "stanard/interface";
 import { paint, willPaint } from "standard/dom";
+import { hydrate } from "standard/interface";
 import component from "./component";
 import Deck from "./deck";
 
