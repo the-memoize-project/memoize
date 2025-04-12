@@ -1,8 +1,8 @@
 import { define } from "directive";
 import { paint, willPaint } from "standard/dom";
+import { hydrate } from "standard/interface";
 import Cards from "./cards";
 import component from "./component";
-import { hydrate } from "./interfaces";
 import style from "./style";
 
 @define("m-deck-empty")
