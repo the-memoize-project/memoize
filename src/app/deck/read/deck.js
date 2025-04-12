@@ -2,7 +2,6 @@ import { params } from "standard/router";
 import Progress from "./progress";
 
 class Deck {
-  #cards;
   #data;
   #progress;
 
