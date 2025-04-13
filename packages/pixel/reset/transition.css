@@ -1,0 +1,13 @@
+::view-transition-old(app),
+::view-transition-new(app) {
+  animation: fade 0.38s ease;
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

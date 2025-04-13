@@ -1,7 +1,9 @@
 const app = document.querySelector("app");
 
 function renderer(content) {
-  app.innerHTML = content;
+  document.startViewTransition(() => {
+    app.innerHTML = content;
+  });
 }
 
 export default renderer;
