@@ -1,7 +1,7 @@
+export { default } from "./client";
 export { default as addCollab } from "./addCollab";
 export { default as cardsOfDeck } from "./cardsOfDeck";
 export { default as cardOfId } from "./cardOfId";
-export { default as client } from "./client";
 export { default as countCardsOfDeck } from "./countCardsOfDeck";
 export { default as createCard } from "./createCard";
 export { default as createDeck } from "./crateDeck";
