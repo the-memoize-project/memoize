@@ -5,10 +5,14 @@ import Validity from "./validity";
 
 const Card = {
   async create(data, userId) {
-    const { createCard } = await import("artifact/supabase");
-    await createCard({
+    const { createCard, createProgress } = await import("artifact/supabase");
+    const { data: card } = await createCard({
       ...data,
       deck: params.deck,
+      user_id: userId,
+    });
+    const { data: _progress } = await createProgress({
+      card: card.id,
       interval: Interval.oneMinute,
       type: Type.LEARN,
       user_id: userId,

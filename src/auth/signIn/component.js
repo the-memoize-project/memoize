@@ -17,12 +17,13 @@ function component() {
           <m-text color="master-darker" family="highlight" size="md" weight="bold" align="center">Bom te ver de novo!</m-text>
           <m-text align="center" size="xxxs">Entre na sua conta para continuar aprendendo com o Memoize</m-text>
         </m-stack>
-        <m-button id="logInWithGoogle" variant="naked" width="100%">
+        <m-button id="button-signinwithgoogle" variant="naked" width="100%">
           <img src="${logo}" alt="Google" loading="lazy" />
           Entrar com Google
+          <m-service name="signInWithOAuth" on="button-signinwithgoogle/click:method/execute"></m-service>
         </m-button>
         <m-text color="master-dark" size="xxxs" weight="medium" align="center">ou</m-text>
-        <m-form>
+        <m-form id="form-signin">
           <template>
             <m-input label="E-mail" name="email" type="email" required>
               <m-validity state="typeMismatch">E-mail inválido</m-validity>
@@ -34,6 +35,8 @@ function component() {
             </m-input>
             <m-button width="100%">Entrar</m-button>
           </template>
+          <m-service id="service-signin" name="signInWithPassword" on="form-signin/submit:method/execute"></m-service>
+          <m-redirect href="${urlFor("dashboard")}" on="service-signin/success:method/go"></m-redirect>
         </m-form>
         <m-stack direction="column" align="center">
           <m-link href="${urlFor("forgotPassword")}">Esqueceu sua senha?</m-link>

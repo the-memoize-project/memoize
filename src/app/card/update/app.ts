@@ -1,9 +1,9 @@
 import { define } from "directive";
 import { paint, willPaint } from "standard/dom";
 import on, { detail, stop } from "standard/event";
+import { hydrate } from "standard/interface";
 import Card from "./card";
 import component from "./component";
-import { hydrate } from "./interfaces";
 import Navigate from "./navigate";
 import style from "./style";
 

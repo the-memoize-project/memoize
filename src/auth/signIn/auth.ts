@@ -16,15 +16,15 @@ class Auth extends HTMLElement {
   }
 
   @on.submit("m-form", prevent, detail)
-  async logIn(data) {
-    const user = await User.signInWithPassword(data);
-    user && Navigate.goToDashboard();
+  async logIn(_data) {
+    // const user = await User.signInWithPassword(data);
+    // user && Navigate.goToDashboard();
     return this;
   }
 
   @on.click("#logInWithGoogle", stop)
   async logInWithGoogle() {
-    await User.signInWithOAuth();
+    // await User.signInWithOAuth();
     return this;
   }
 

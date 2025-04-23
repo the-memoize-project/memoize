@@ -5,6 +5,7 @@ export { default as cardOfId } from "./cardOfId";
 export { default as countCardsOfDeck } from "./countCardsOfDeck";
 export { default as createCard } from "./createCard";
 export { default as createDeck } from "./crateDeck";
+export { default as createProgress } from "./createProgress";
 export { default as deckOfId } from "./deckOfId";
 export { default as decksOfUser } from "./decksOfUser";
 export { default as deleteCardOfId } from "./deleteCardOfId";
