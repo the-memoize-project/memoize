@@ -2,7 +2,7 @@ import style from "auth/signIn/style";
 import { define } from "directive";
 import { paint, willPaint } from "standard/dom";
 import on, { detail, stop } from "standard/event";
-import { hydrate } from "standard/interface";
+import { handle } from "standard/interface";
 import * as Navigate from "standard/navigate";
 import component from "./component";
 import User from "./user";
@@ -15,16 +15,21 @@ class Auth extends HTMLElement {
     this.attachShadow({ mode: "open" });
   }
 
-  @on.submit(":host m-form", stop, detail)
+  @on.submit("reset", stop, detail)
   async reset(data) {
-    const user = await User.updateUser(data);
-    user && Navigate.goToPasswordReseted();
+    const auth = await User.updateUser(data);
+    auth.match({
+      Ok: () => Navigate.goToPasswordReseted(),
+    });
     return this;
   }
 
   @willPaint
-  async [hydrate]() {
-    if (await User.isItAuthenticated()) Navigate.goToDashboard();
+  async [handle]() {
+    const auth = await User.isItAuthenticated();
+    auth.match({
+      Authenticated: () => Navigate.goToDashboard(),
+    });
     return this;
   }
 }

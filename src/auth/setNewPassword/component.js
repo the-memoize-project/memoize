@@ -16,7 +16,7 @@ function component() {
           <m-text color="master-darker" family="highlight" size="md" weight="bold" align="center">Quase lá!</m-text>
           <m-text align="center" size="xxxs">Crie uma nova senha segura para continuar seus estudos com tranquilidade</m-text>
         </m-stack>
-        <m-form>
+        <m-form id="reset">
           <template>
             <m-input label="Senha" name="password" type="password" required>
               <m-validity state="valueMissing">Senha é obrigatória</m-validity>

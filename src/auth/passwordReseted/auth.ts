@@ -2,7 +2,7 @@ import User from "auth/forgotPassword/user";
 import style from "auth/signIn/style";
 import { define } from "directive";
 import { paint, willPaint } from "standard/dom";
-import { hydrate } from "standard/interface";
+import { handle } from "standard/interface";
 import * as Navigate from "standard/navigate";
 import component from "./component";
 
@@ -15,8 +15,11 @@ class Auth extends HTMLElement {
   }
 
   @willPaint
-  async [hydrate]() {
-    if (await User.isItAuthenticated()) Navigate.goToDashboard();
+  async [handle]() {
+    const auth = await User.isItAuthenticated();
+    auth.match({
+      Authenticated: () => Navigate.goToDashboard(),
+    });
     return this;
   }
 }

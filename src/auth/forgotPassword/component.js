@@ -16,7 +16,7 @@ function component() {
           <m-text color="master-darker" family="highlight" size="md" weight="bold" align="center">Tudo bem, isso acontece!</m-text>
           <m-text align="center" size="xxxs">Vamos te ajudar a recuperar o acesso. Informe seu e-mail abaixo</m-text>
         </m-stack>
-        <m-form>
+        <m-form id="reset">
           <template>
             <m-input label="E-mail" name="email" type="email" required>
               <m-validity state="typeMismatch">E-mail inválido</m-validity>
