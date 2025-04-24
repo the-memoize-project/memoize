@@ -1,9 +1,10 @@
 import { define } from "directive";
 import { paint, willPaint } from "standard/dom";
 import on, { detail, prevent, stop } from "standard/event";
-import { hydrate } from "standard/interface";
+import { handle } from "standard/interface";
 import * as Navigate from "standard/navigate";
 import component from "./component";
+import Notification from "./notification";
 import style from "./style";
 import User from "./user";
 
@@ -15,22 +16,28 @@ class Auth extends HTMLElement {
     this.attachShadow({ mode: "open" });
   }
 
-  @on.submit("m-form", prevent, detail)
-  async logIn(_data) {
-    // const user = await User.signInWithPassword(data);
-    // user && Navigate.goToDashboard();
+  @on.submit("#signin", prevent, detail)
+  async signIn(data) {
+    const auth = await User.signInWithPassword(data);
+    auth.match({
+      Success: () => Navigate.goToDashboard(),
+      Failure: () => Notification.signInFail(),
+    });
     return this;
   }
 
-  @on.click("#logInWithGoogle", stop)
-  async logInWithGoogle() {
-    // await User.signInWithOAuth();
+  @on.click("#signinwithgoogle", stop)
+  signInWithGoogle() {
+    User.signInWithOAuth();
     return this;
   }
 
   @willPaint
-  async [hydrate]() {
-    if (await User.isItAuthenticated()) Navigate.goToDashboard();
+  async [handle]() {
+    const auth = await User.isItAuthenticated();
+    auth.match({
+      Authenticated: () => Navigate.goToDashboard(),
+    });
     return this;
   }
 }

@@ -2,7 +2,7 @@ import cache from "./cache";
 import pending from "./pending";
 import ttl from "./ttl";
 
-async function runLock(key, fn, validity = ttl.TEN_MINUTES) {
+async function runLock(key, fn, validity = ttl.TWO_SECONDS) {
   if (isCacheValid(key)) return cache.get(key).value;
   if (pending.has(key)) return pending.get(key);
 

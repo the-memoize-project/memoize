@@ -1,8 +1,11 @@
+import Option from "standard/option";
+
 const User = {
   async isItAuthenticated() {
     const { getSession } = await import("artifact/supabase");
-    const { data: session } = await getSession();
-    return Boolean(session?.user);
+    const { data: session, error } = await getSession();
+    const { user } = session ?? {};
+    return user ? Option.Authenticated(user) : Option.Expired(error);
   },
 
   async signInWithOAuth() {
@@ -13,8 +16,11 @@ const User = {
 
   async signInWithPassword(data) {
     const { signInWithPassword } = await import("artifact/supabase");
-    const { data: user } = await signInWithPassword(data);
-    return user;
+    const {
+      data: { user } = {},
+      error,
+    } = await signInWithPassword(data);
+    return user ? Option.Success(user) : Option.Failure(error);
   },
 };
 

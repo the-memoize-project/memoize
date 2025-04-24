@@ -19,7 +19,6 @@ import "./main";
 import "./markdown";
 import "./modal";
 import "./redirect";
-import "./service";
 import "./show";
 import "./source";
 import "./stack";

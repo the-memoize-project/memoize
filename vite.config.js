@@ -26,7 +26,6 @@ export default defineConfig({
       element: resolve(__dirname, "packages/element"),
       pixel: resolve(__dirname, "packages/pixel"),
       polyfill: resolve(__dirname, "packages/polyfill"),
-      service: resolve(__dirname, "packages/service"),
       standard: resolve(__dirname, "packages/standard"),
       app: resolve(__dirname, "src/app"),
       auth: resolve(__dirname, "src/auth"),

@@ -1,6 +1,7 @@
 import { define } from "directive";
-import { paint } from "standard/dom";
-import Echo from "standard/echo";
+import attributeChanged, { booleanAttribute } from "directive/attributeChanged";
+import { paint, willPaint } from "standard/dom";
+import Echo, { dispatchEvent } from "standard/echo";
 import on, { stop } from "standard/event";
 import { visibility } from "standard/interface";
 import joinCut from "standard/joinCut";
@@ -17,6 +18,12 @@ class Modal extends Echo(HTMLElement) {
     return (this.#opened ??= false);
   }
 
+  @attributeChanged("opened", booleanAttribute)
+  @joinCut(visibility)
+  set opened(value) {
+    this.#opened = value;
+  }
+
   constructor() {
     super();
     this.attachShadow({ mode: "open" });
@@ -24,18 +31,18 @@ class Modal extends Echo(HTMLElement) {
   }
 
   @on.click("overlayer", stop)
-  @joinCut(visibility)
+  @dispatchEvent("close")
   close() {
-    this.#opened = false;
+    this.opened = false;
     return this;
   }
 
-  @joinCut(visibility)
   open() {
-    this.#opened = true;
+    this.opened = true;
     return this;
   }
 
+  @willPaint
   [visibility]() {
     this.opened
       ? this.#internals.states.add("opened")
