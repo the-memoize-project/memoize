@@ -1,7 +1,8 @@
 const Notification = {
   signInFail() {
-    alert(
-      "Ops! Não conseguimos fazer seu login. Confere e-mail e senha e tenta de novo.",
+    Flash.alert(
+      "E-mail ou senha inválidos!",
+      "Confere suas credenciais e tenta de novo.",
     );
     return Notification;
   },

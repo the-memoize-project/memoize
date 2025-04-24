@@ -1,11 +1,10 @@
 import { attributeChanged, define } from "directive";
-import { booleanAttribute } from "directive/attributeChanged";
 import { paint, repaint } from "standard/dom";
 import Echo, { dispatchEvent } from "standard/echo";
 import on, { stop } from "standard/event";
 import joinCut from "standard/joinCut";
 import component from "./component";
-import { dispatchFormAction, setState } from "./interfaces";
+import { setState } from "./interfaces";
 import style from "./style";
 
 @define("m-button")

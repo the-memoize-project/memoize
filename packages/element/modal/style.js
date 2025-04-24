@@ -13,6 +13,7 @@ function style() {
 
       overlayer {
         align-items: center;
+        background-color: rgba(0, 0, 0, var(--opacity-level-light));
         display: flex;
         height: 100%;
         justify-content: center;

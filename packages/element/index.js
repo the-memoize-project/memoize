@@ -5,6 +5,7 @@ import "./box";
 import "./button";
 import "./chart";
 import "./cover";
+import "./flash";
 import "./footer";
 import "./form";
 import "./header";

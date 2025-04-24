@@ -1,6 +1,9 @@
 import { define } from "directive";
-import attributeChanged, { booleanAttribute } from "directive/attributeChanged";
-import { paint } from "standard/dom";
+import attributeChanged, {
+  booleanAttribute,
+  resizing,
+} from "directive/attributeChanged";
+import { paint, repaint } from "standard/dom";
 import { visibility } from "standard/interface";
 import joinCut from "standard/joinCut";
 import component from "./component";
@@ -11,8 +14,10 @@ import style from "./style";
 class Box extends HTMLElement {
   #elevated;
   #internals;
+  #height;
   #outlined;
   #spacing;
+  #width;
 
   get elevated() {
     return (this.#elevated ??= false);
@@ -24,6 +29,16 @@ class Box extends HTMLElement {
     this.#elevated = value;
   }
 
+  get height() {
+    return (this.#height ??= "auto");
+  }
+
+  @attributeChanged("height", resizing)
+  @repaint
+  set height(value) {
+    this.#height = value;
+  }
+
   get outlined() {
     return (this.#outlined ??= false);
   }
@@ -32,6 +47,16 @@ class Box extends HTMLElement {
   @joinCut(visibility)
   set outlined(value) {
     this.#outlined = value;
+  }
+
+  get width() {
+    return (this.#width ??= "100%");
+  }
+
+  @attributeChanged("width", resizing)
+  @repaint
+  set width(value) {
+    this.#width = value;
   }
 
   constructor() {
