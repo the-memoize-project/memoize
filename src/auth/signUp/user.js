@@ -1,14 +1,17 @@
+import Option from "standard/option";
+
 const User = {
   async isItAuthenticated() {
     const { getSession } = await import("artifact/supabase");
-    const { data: session } = await getSession();
-    return Boolean(session?.user);
+    const { data: session, error } = await getSession();
+    const { user } = session ?? {};
+    return user ? Option.Authenticated(user) : Option.Expired(error);
   },
 
   async signUp(data) {
     const { signUp } = await import("artifact/supabase");
-    const { data: user } = await signUp(data);
-    return user;
+    const { data: user, error } = await signUp(data);
+    return user ? Option.Created(user) : Option.Error(error);
   },
 };
 

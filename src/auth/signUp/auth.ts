@@ -2,9 +2,10 @@ import style from "auth/signIn/style";
 import { define } from "directive";
 import { paint, willPaint } from "standard/dom";
 import on, { detail, stop } from "standard/event";
-import { hydrate } from "standard/interface";
+import { handle } from "standard/interface";
 import * as Navigate from "standard/navigate";
 import component from "./component";
+import Notification from "./notification";
 import User from "./user";
 
 @define("m-sign-up")
@@ -15,16 +16,22 @@ class Auth extends HTMLElement {
     this.attachShadow({ mode: "open" });
   }
 
-  @on.submit(":host m-form", stop, detail)
+  @on.submit("#signUp", stop, detail)
   async create(data) {
-    const user = await User.signUp(data);
-    user && Navigate.goToDashboard();
+    const auth = await User.signUp(data);
+    auth.match({
+      Created: () => Navigate.goToDashboard(),
+      Error: () => Notification.signUpFail(),
+    });
     return this;
   }
 
   @willPaint
-  async [hydrate]() {
-    if (await User.isItAuthenticated()) Navigate.goToDashboard();
+  async [handle]() {
+    const auth = await User.isItAuthenticated();
+    auth.match({
+      Authenticated: () => Navigate.goToDashboard(),
+    });
     return this;
   }
 }

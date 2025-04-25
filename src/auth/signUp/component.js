@@ -16,7 +16,7 @@ function component() {
           <m-text color="master-darker" family="highlight" size="md" weight="bold" align="center">Vamos começar?</m-text>
           <m-text align="center" size="xxxs">Crie sua conta e desbloqueie uma nova forma de estudar</m-text>
         </m-stack>
-        <m-form>
+        <m-form id="signUp">
           <template>
             <m-input label="Nome" name="name" required>
               <m-validity state="valueMissing">Nome é obrigatório</m-validity>

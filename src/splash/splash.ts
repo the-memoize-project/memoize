@@ -1,10 +1,10 @@
+import User from "auth/signIn/user";
 import { define } from "directive";
 import { paint, willPaint } from "standard/dom";
-import { hydrate } from "standard/interface";
+import { handle } from "standard/interface";
 import * as Navigate from "standard/navigate";
 import component from "./component";
 import style from "./style";
-import User from "./user";
 
 @define("m-splash")
 @paint(component, style)
@@ -15,8 +15,11 @@ class Splash extends HTMLElement {
   }
 
   @willPaint
-  async [hydrate]() {
-    if (await User.isItAuthenticated()) Navigate.goToDashboard();
+  async [handle]() {
+    const auth = await User.isItAuthenticated();
+    auth.match({
+      Authenticated: () => Navigate.goToDashboard(),
+    });
     return this;
   }
 }
