@@ -4,7 +4,7 @@ class Timer {
 
   get elapsed() {
     return Math.min(
-      30000,
+      15000,
       this.#durations.reduce((total, duration) => total + duration, 0),
     );
   }
